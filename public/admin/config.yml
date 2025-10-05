@@ -1,20 +1,12 @@
 local_backend: true
 
 backend:
-  name: git-gateway
+  name: github
   repo: oxbridge-at/website
   branch: main
-  identity_url: "https://lucky-paprenjak-cc713b.netlify.app//.netlify/identity"
-  gateway_url: "https://lucky-paprenjak-cc713b.netlify.app//.netlify/git"
-  site_domain: "https://oxbridge-at.github.io/website"
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
-
-site_url: "https://oxbridge-at.github.io/website/"
-display_url: "https://oxbridge-at.github.io/website/"
-logo_url: "https://oxbridge-at.github.io/website/images/logo.avif"
-
 
 collections:
   - name: "sections"
