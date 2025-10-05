@@ -1,23 +1,69 @@
 ---
 import Layout from "../layouts/BaseLayout.astro";
-const sections = await Astro.glob('../../content/sections/*.md');
+
+// Fetch all main sections
+const sections = await Astro.glob("../../content/sections/*.md");
 sections.sort((a, b) => (a.frontmatter.order ?? 0) - (b.frontmatter.order ?? 0));
+
+// Fetch events (for the "Events" section)
+const events = await Astro.glob("../../content/events/*.md");
+events.sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
 ---
 <Layout title="Oxbridge Austria">
-  <section class="text-center space-y-6">
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
+    <ul class="flex justify-center gap-6 py-3 text-blue-700 font-medium">
+      {sections.map(section => (
+        <li>
+          <a href={`#${section.frontmatter.title.toLowerCase().replace(/\s+/g, '-')}`} class="hover:underline">
+            {section.frontmatter.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <section class="text-center space-y-6 my-10">
     <h1 class="text-3xl font-bold text-blue-700">Oxford and Cambridge Society of Austria</h1>
   </section>
+
   {sections.map(section => (
-    <section class="my-10 space-y-4">
-      <h2 class="text-2xl font-bold text-blue-700">
+    <section id={section.frontmatter.title.toLowerCase().replace(/\s+/g, '-')} class="my-16 space-y-4 scroll-mt-24">
+      <h2 class="text-2xl font-bold text-blue-700 border-b border-gray-200 pb-2">
         {section.frontmatter.title}
       </h2>
 
       {section.frontmatter.image && (
-        <img src={section.frontmatter.image} alt={section.frontmatter.title} class="rounded-xl" />
+        <img
+          src={section.frontmatter.image}
+          alt={section.frontmatter.title}
+          class="rounded-xl"
+        />
       )}
 
       <div class="prose max-w-none" set:html={section.compiledContent()} />
+
+      {section.frontmatter.title.toLowerCase() === "events" && (
+        <ul class="space-y-6 mt-6">
+          {events.map(e => (
+            <li>
+              <h3 class="text-xl font-semibold text-blue-800">{e.frontmatter.title}</h3>
+              <p class="text-sm text-gray-600">
+                {new Date(e.frontmatter.date).toLocaleDateString("en-GB", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+                {e.frontmatter.location ? ` · ${e.frontmatter.location}` : ""}
+              </p>
+              <div class="prose max-w-none" set:html={e.compiledContent()} />
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   ))}
+
+  <script>
+    document.documentElement.style.scrollBehavior = 'smooth';
+  </script>
 </Layout>
