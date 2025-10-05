@@ -1,0 +1,21 @@
+local_backend: true
+
+backend:
+  name: github
+  repo: oxbridge-at/website
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "sections"
+    label: "Main Sections"
+    folder: "content/sections"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Lower numbers appear first", default: 0 }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }

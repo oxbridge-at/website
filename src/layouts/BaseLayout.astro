@@ -1,0 +1,24 @@
+---
+import "../styles/global.css";
+const { title = "Club" } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-white text-gray-900 flex flex-col items-center">
+    <header class="w-full text-center py-6 border-b border-gray-200">
+      <img src="/images/logo.avif" alt="Club logo" class="mx-auto w-40 h-auto" />
+    </header>
+
+    <main class="flex-1 w-full max-w-3xl px-4 py-10">
+      <slot /> <!-- this is where each page’s content goes -->
+    </main>
+
+    <footer class="text-sm text-gray-500 py-4 text-center border-t border-gray-200 w-full">
+      &copy; {new Date().getFullYear()} Oxford and Cambridge Society of Austria
+    </footer>
+  </body>
+</html>

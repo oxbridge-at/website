@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/BaseLayout.astro";
+const sections = await Astro.glob('../../content/sections/*.md');
+sections.sort((a, b) => (a.frontmatter.order ?? 0) - (b.frontmatter.order ?? 0));
+---
+<Layout title="Oxbridge Austria">
+  <section class="text-center space-y-6">
+    <h1 class="text-3xl font-bold text-blue-700">Oxford and Cambridge Society of Austria</h1>
+  </section>
+  {sections.map(section => (
+    <section class="my-10 space-y-4">
+      <h2 class="text-2xl font-bold text-blue-700">
+        {section.frontmatter.title}
+      </h2>
+
+      {section.frontmatter.image && (
+        <img src={section.frontmatter.image} alt={section.frontmatter.title} class="rounded-xl" />
+      )}
+
+      <div class="prose max-w-none" set:html={section.compiledContent()} />
+    </section>
+  ))}
+</Layout>
