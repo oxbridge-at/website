@@ -4,8 +4,8 @@ backend:
   name: git-gateway
   repo: oxbridge-at/website
   branch: main
-  identity_url: "https://tubular-florentine-24baa7.netlify.app/.netlify/identity"
-  gateway_url: "https://tubular-florentine-24baa7.netlify.app/.netlify/git"
+  identity_url: "https://lucky-paprenjak-cc713b.netlify.app//.netlify/identity"
+  gateway_url: "https://lucky-paprenjak-cc713b.netlify.app//.netlify/git"
   site_domain: "https://oxbridge-at.github.io/website"
 
 media_folder: "public/images/uploads"
