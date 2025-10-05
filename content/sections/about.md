@@ -1,6 +1,6 @@
 ---
 order: 1
-title: About Us
+title: About
 image: ""
 ---
 We provide past and present students of the Universities of Oxford and Cambridge, and their guests, with a wide variety of events in Austria—stimulating, cultural, or simply fun. *Herzlich willkommen!​*

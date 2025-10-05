@@ -9,15 +9,24 @@ const { title = "Club" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="font-sans bg-oxgray text-gray-900 selection:bg-oxblue/20">
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow-sm border-b border-gray-200">
-      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between p-4">
-        <div class="flex items-center gap-3">
-          <img src={`${import.meta.env.BASE_URL}images/logo.avif`} alt="Club logo" class="w-16 h-auto" />
-          <h1 class="text-xl font-bold text-oxblue">Oxford & Cambridge Society of Austria</h1>
-        </div>
-        <slot name="nav" />
-      </div>
-    </header>
+   <header
+  id="site-header"
+  class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm border-b border-gray-200 transition-transform duration-300">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between px-4 py-3 sm:py-4">
+    <div class="flex items-center gap-3">
+      <img
+        src={`${import.meta.env.BASE_URL}images/logo.avif`}
+        alt="Club logo"
+        class="w-10 sm:w-16 h-auto transition-all duration-300"
+      />
+      <h1 class="text-lg sm:text-xl font-bold text-oxblue text-center sm:text-left">
+        Oxford & Cambridge Society of Austria
+      </h1>
+    </div>
+    <slot name="nav" />
+  </div>
+</header>
+
 
     <main class="max-w-3xl mx-auto px-4 py-10 space-y-16">
       <slot />
@@ -26,5 +35,23 @@ const { title = "Club" } = Astro.props;
     <footer class="text-center text-sm text-gray-500 py-8 border-t border-gray-200">
       © {new Date().getFullYear()} Oxford & Cambridge Society of Austria
     </footer>
+
+  <script>
+    let lastScrollY = window.scrollY;
+    const header = document.getElementById("site-header");
+    const threshold = 50;
+
+    window.addEventListener("scroll", () => {
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY && currentY > threshold) {
+        header.style.transform = "translateY(-100%)"; // hide
+      } else {
+        header.style.transform = "translateY(0)"; // show
+      }
+      lastScrollY = currentY;
+    });
+  </script>
+
+
   </body>
 </html>
