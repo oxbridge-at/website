@@ -5,7 +5,7 @@ const sections = await Astro.glob("../../content/sections/*.md");
 sections.sort((a, b) => (a.frontmatter.order ?? 0) - (b.frontmatter.order ?? 0));
 
 const events = await Astro.glob("../../content/events/*.md");
-events.sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
+events.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 ---
 <Layout title="Oxbridge Austria">
   <Fragment slot="nav">
@@ -39,7 +39,7 @@ events.sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date
           {events.map((e) => (
             <li class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
               {e.frontmatter.image && (
-                <img src={e.frontmatter.image} alt={e.frontmatter.title} class="rounded-lg mb-4" />
+                <img src={`${import.meta.env.BASE_URL}${e.frontmatter.image.replace(/^\/+/, '')}`} alt={e.frontmatter.title} class="rounded-lg mb-4" />
               )}
               <h3 class="text-xl font-semibold text-oxblue mb-1">{e.frontmatter.title}</h3>
               <p class="text-sm text-gray-600 mb-2">
