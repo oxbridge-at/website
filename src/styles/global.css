@@ -3,3 +3,14 @@
 #site-header {
 transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.prose p + p {
+	margin-top: 0.6em;
+}
+
+@media (min-width: 768px) {
+	.prose p {
+		text-align: justify;
+		text-justify: inter-word;
+	}
+}
