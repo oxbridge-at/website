@@ -5,7 +5,7 @@ image: ""
 ---
 We provide past and present students of the Universities of Oxford and Cambridge, and their guests, with a wide variety of events in Austria—stimulating, cultural, or simply fun. *Herzlich willkommen!​*
 
-Rarely do the Universities of Oxford and Cambridge come together, but in Austria, our association unites them. Add the Austrian component, and you get a wonderful mix of the best of British, the best of Austrian, and broader cross-cultural activities. Founded in 1995 - 30 years ago - we are the face of our universities in Austria.
+The Universities of Oxford and Cambridge come together on many occasions, and in Austria, it is our association that unites them. Giving you a wonderful mix of the best of British, the best of Austrian, and broader cross-cultural activities. Founded in 1995 - 30 years ago - we are the face of our universities in Austria.
 
 Several events are organised jointly with the societies of other British universities and other leading institutions, including members of the Ivy League.
 
