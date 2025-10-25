@@ -20,7 +20,7 @@ collections:
       - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Lower numbers appear first", default: 0 }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
   - name: "events"
     label: "Events"
     folder: "content/events"
