@@ -1,4 +1,4 @@
 ---
-order: 3
-title: "Events"
+order: 2
+title: Events
 ---
